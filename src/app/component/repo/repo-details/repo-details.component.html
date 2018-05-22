@@ -1,0 +1,16 @@
+<section *ngIf="repo">
+  <div class="content">
+    <div><span>ID: </span>{{repo.id}}</div>
+    <div><span>Owner: </span><a href="{{repo.owner.html_url}}" target="_blank">{{repo.owner.login}}</a></div>
+    <div><span>Forks: </span>{{repo.forks_count}}</div>
+    <div><span>Stargazers: </span>{{repo.stargazers_count}}</div>
+    <div><span>Open Issues: </span>{{repo.open_issues_count}}</div>
+    <div><span>Score: </span>{{repo.score}}</div>
+    <div>
+      <span *ngIf="repo.open_issues_count > 0"><a [routerLink]="['/issue_list', search, page, repo.full_name, 1]">Issue List</a> |</span>
+      <span *ngIf="repo.open_issues_count > 0"><a (click)="issueGraph()">Issue Graph</a> |</span>
+      <span><a href="{{repo.html_url}}" target="_blank">Visit Project</a> |</span>
+      <span><a (click)="hide()">X</a></span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+<app-repo-search [placeholder]="search"></app-repo-search>
+<p class="content"><a [routerLink]="['/repo_list', search || '', searchPage || '']">Back to previous search</a></p>
+<h2>Issue details for GitHub repository "<span>{{repo}}</span>":</h2>
+<div class="content bottom-space">
+  <app-paginated-list [show]="show" [data]="data" [urlSegments]="urlSegments">
+    <ng-template let-item>
+      <li class="{{item.selected ? (item.open ? 'selected-open' : 'selected') : 'not-selected'}}">
+        <a (click)="toggleItem(item)" appClearDblSelection>{{item.title}}</a>
+        <app-repo-issue-details [hidden]="!item.open" [issue]="item"></app-repo-issue-details>
+        <p [hidden]="item.open">{{item.excerpt}}</p>
+      </li>
+    </ng-template>
+  </app-paginated-list>
+  <p *ngIf="data && data.error"><a (click)="fetchData()">Refresh</a></p>
+</div>
+<app-repo-search *ngIf="show && data.items.length > 2" [placeholder]="search"></app-repo-search>
+<p *ngIf="show" class="content bottom-space"><a [routerLink]="['/repo_list', search, searchPage]">Back to previous search</a> | <a routerLink="/search">Opening page</a></p>

@@ -1,0 +1,8 @@
+<h2 *ngIf="!placeholder">Search GitHub repositories by name:</h2>
+<div class="content md-form input-group">
+  <input type="search" class="form-control" placeholder="{{placeholder || 'repository name'}}" [(ngModel)]="searchString" (keyup.enter)="search()">
+  <div class="input-group-btn">
+    <button type="button" class="btn {{placeholder ? 'btn-sm' : ''}} btn-primary waves-light" (click)="search()">Search</button>
+  </div>
+</div>
+<span class="content" *ngIf="errorMessage">{{errorMessage}}</span>

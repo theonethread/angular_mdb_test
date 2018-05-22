@@ -1,0 +1,11 @@
+<section *ngIf="issue">
+  <p>{{issue.body}}</p>
+  <div><span>ID: </span>{{issue.id}}</div>
+  <div><span>Labels: </span>{{labels}}</div>
+  <div><span>Creator: </span><a href="{{issue.user.html_url}}" target="_blank">{{issue.user.login}}</a></div>
+  <!--div><span>State: </span>{{issue.state}}</div-->
+  <div>
+    <span><a href="{{issue.html_url}}" target="_blank">Visit Issue</a> |</span>
+    <span><a (click)="hide(issue)">X</a></span>
+  </div>
+</section>

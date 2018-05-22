@@ -1,0 +1,108 @@
+* {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+  background-color: #EEE;
+}
+
+body {
+  min-width: 300px;
+  min-height: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 0.8rem;
+  width: auto;
+  border-left: 2px solid darkgrey;
+  border-right: 2px solid darkgrey;
+  outline: 3px solid lightgray;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: darkgray;
+  padding: 0.8rem 0.3rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: grey;
+  padding: 0 0.5rem 1rem;
+  margin: 0;
+
+  span {
+    font-weight: bold;
+  }
+}
+
+.content {
+  font-size: 0.9rem;
+  padding: 0 1rem 0.5rem 2rem;
+  word-wrap: break-word;
+
+  ul {
+    padding-left: 1rem;
+
+    li {
+      padding: 0.3rem;
+
+      a {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  a {
+    font-weight: bold;
+  }
+
+  div, li {
+
+    span, label {
+      font-weight: bold;
+    }
+  }
+}
+
+.bottom-space {
+  padding-bottom: 1.5rem + 1 px;
+  margin: 0;
+}
+
+.not-selected {
+  border: 1px solid #FFF;
+}
+
+.selected {
+  background-color: #EDF7FF;
+  border: 1px solid #FFF;
+}
+
+.selected-open {
+  @extend .selected;
+  outline: 1px solid #F1F4FF;
+  border: 1px solid #B1D0FF;
+}
+
+.md-form {
+  margin: 0;
+  padding-bottom: 1.5rem;
+  max-width: 30rem;
+}
+
+a:not([href]):not([tabindex]) {
+  color: #0275D8;
+}
+
+a:not([href]):not([tabindex]):hover {
+  color: #0056B3;
+}

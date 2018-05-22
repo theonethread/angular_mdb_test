@@ -1,0 +1,20 @@
+<section [hidden]="!show">
+  <section *ngIf="data && data.items.length; else noitems">
+    <ul>
+      <ng-template ngFor let-item [ngForOf]="data.items" [ngForTemplate]="template"></ng-template>
+    </ul>
+    <p>Page {{data.page}}/{{data.numPages}} (Showing max. 30/page, limited to 1000 matches)</p>
+    <button type="button" class="btn btn-sm btn-primary waves-light" *ngIf="data.prev" [routerLink]="urlSegments.concat(data.page - 1)">Prev</button>
+    <button type="button" class="btn btn-sm btn-primary waves-light" *ngIf="data.next" [routerLink]="urlSegments.concat(data.page + 1)">Next</button>
+  </section>
+  <ng-template #noitems>
+    <section *ngIf="data && data.error; else empty">
+      <p>{{data.error}}:</p>
+      <p>{{data.errorDescription}}</p>
+    </section>
+    <ng-template #empty>
+      <p>No items to display.</p>
+    </ng-template>
+  </ng-template>
+</section>
+<p [hidden]="show">Loading...</p>

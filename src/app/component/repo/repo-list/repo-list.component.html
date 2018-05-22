@@ -1,0 +1,19 @@
+<app-repo-search [placeholder]="search"></app-repo-search>
+<h2>Search results for GitHub repository "<span>{{search}}</span>":</h2>
+<div class="content">
+  <app-paginated-list [show]="show" [data]="data" [urlSegments]="urlSegments">
+    <ng-template let-item>
+      <li class="{{item.selected ? (item.open ? 'selected-open' : 'selected') : 'not-selected'}}">
+        <a (click)="toggleItem(item)" appClearDblSelection>{{item.full_name}}</a>
+        <p>{{item.description}}</p>
+        <app-repo-details [hidden]="!item.open" [repo]="item" [search]="search" [page]="page"></app-repo-details>
+      </li>
+    </ng-template>
+  </app-paginated-list>
+  <p *ngIf="data && data.error"><a (click)="fetchData()">Refresh</a></p>
+</div>
+<app-repo-search *ngIf="show && data.items.length > 2" [placeholder]="search"></app-repo-search>
+<div *ngIf="show" class="content">
+  <p class="bottom-space"><a routerLink="/search">Opening page</a></p>
+</div>
+
